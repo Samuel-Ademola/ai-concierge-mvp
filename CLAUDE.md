@@ -12,6 +12,20 @@ toy built around a fake property.
 Not finalized yet. Update this section once chosen — note the language,
 framework, and any key libraries so future assistant sessions don't guess.
 
+## Feature Development Rules
+
+- All forms must use `react-hook-form` with Zod validation. Validation logic must not be duplicated inside components.
+
+- Every user-facing form field must include accessible labels and appropriate validation feedback using semantic HTML and ARIA attributes where required.
+
+- A feature is not complete until its expected behavior is verified with tests covering validation, successful submission, and important edge cases.
+
+- User input must be normalized before processing. Required text fields should handle whitespace-only values correctly.
+
+- Async actions must provide clear user feedback, including loading states, disabled actions during submission, and error handling.
+
+- New features should define requirements and expected behavior before implementation to reduce incorrect assumptions from AI-assisted development.
+
 ## Conventions
 - Commit messages: Conventional Commits (`feat:`, `fix:`, `chore:`, `docs:`, etc.)
 - Keep functions small and single-purpose
