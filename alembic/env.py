@@ -1,4 +1,4 @@
-﻿from logging.config import fileConfig
+from logging.config import fileConfig
 import os
 import sys
 
@@ -18,6 +18,7 @@ from app.models import (
     Guest,
     GuestRequest,
     Hotel,
+    PasswordResetToken,
     Room,
     Stay,
     User,
