@@ -1,0 +1,232 @@
+﻿.preferences-form {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #e5e1d9;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 10px 32px rgba(29, 28, 26, 0.05);
+}
+
+.preferences-form__header {
+  padding: 24px 26px;
+  border-bottom: 1px solid #e5e1d9;
+  background: #fcfbf9;
+}
+
+.preferences-form__section-label {
+  display: block;
+  margin-bottom: 7px;
+  color: #918d87;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.preferences-form__header h3 {
+  margin: 0;
+  color: #1d1c1a;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.preferences-form__header p {
+  margin: 6px 0 0;
+  color: #918d87;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.preferences-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 20px;
+  padding: 26px;
+}
+
+.preferences-field {
+  min-width: 0;
+}
+
+.preferences-field--full {
+  padding: 0 26px 26px;
+}
+
+.preferences-field label {
+  display: block;
+  margin-bottom: 8px;
+  color: #1d1c1a;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.preferences-field__label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.preferences-field__label-row label {
+  margin-bottom: 8px;
+}
+
+.preferences-field__label-row > span {
+  margin-bottom: 8px;
+  color: #918d87;
+  font-size: 9px;
+}
+
+.preferences-field input,
+.preferences-field select,
+.preferences-field textarea {
+  display: block;
+  width: 100%;
+  border: 1px solid #ddd8cf;
+  border-radius: 10px;
+  outline: none;
+  background: #ffffff;
+  color: #1d1c1a;
+  font-family: inherit;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+.preferences-field input,
+.preferences-field select {
+  height: 46px;
+  padding: 0 13px;
+}
+
+.preferences-field textarea {
+  min-height: 118px;
+  padding: 12px 13px;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.preferences-field input::placeholder,
+.preferences-field textarea::placeholder {
+  color: #aaa49b;
+}
+
+.preferences-field input:focus,
+.preferences-field select:focus,
+.preferences-field textarea:focus {
+  border-color: #b08d57;
+  box-shadow: 0 0 0 3px #f4ecdf;
+}
+
+.preferences-field input[aria-invalid="true"],
+.preferences-field select[aria-invalid="true"],
+.preferences-field textarea[aria-invalid="true"] {
+  border-color: #c97870;
+}
+
+.preferences-field__error {
+  display: block;
+  margin-top: 6px;
+  color: #a94442;
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+.preferences-form__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 26px;
+  border-top: 1px solid #e5e1d9;
+  background: #faf9f6;
+}
+
+.preferences-form__note {
+  max-width: 460px;
+  margin: 0;
+  color: #918d87;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.preferences-save-button {
+  min-width: 150px;
+  min-height: 42px;
+  padding: 0 17px;
+  border: 0;
+  border-radius: 9px;
+  background: #1d1c1a;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.preferences-save-button:hover:not(:disabled) {
+  background: #2b2926;
+}
+
+.preferences-save-button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.preferences-alert {
+  margin: 0 26px 20px;
+  padding: 11px 12px;
+  border-radius: 9px;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.preferences-alert--success {
+  background: #edf6ef;
+  color: #49664d;
+}
+
+.preferences-alert--error {
+  background: #fbeaea;
+  color: #a94442;
+}
+
+@media (max-width: 720px) {
+  .preferences-form__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .preferences-form__footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .preferences-form__note {
+    max-width: none;
+  }
+
+  .preferences-save-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .preferences-form__header {
+    padding: 20px 17px;
+  }
+
+  .preferences-form__grid {
+    padding: 20px 17px;
+  }
+
+  .preferences-field--full {
+    padding: 0 17px 20px;
+  }
+
+  .preferences-form__footer {
+    padding: 15px 17px;
+  }
+
+  .preferences-alert {
+    margin-right: 17px;
+    margin-left: 17px;
+  }
+}

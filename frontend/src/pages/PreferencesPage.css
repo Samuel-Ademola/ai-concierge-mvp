@@ -1,0 +1,339 @@
+﻿.preferences-page {
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.preferences-page__intro {
+  margin-bottom: 30px;
+}
+
+.preferences-page__eyebrow {
+  margin: 0 0 8px;
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.preferences-page__intro h2 {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--heading);
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.preferences-page__description {
+  max-width: 620px;
+  margin: 11px 0 0;
+  color: var(--text-light);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.preferences-form {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: 0 10px 32px rgba(29, 28, 26, 0.05);
+}
+
+.preferences-form__header {
+  padding: 24px 26px;
+  border-bottom: 1px solid var(--border);
+  background: #fcfbf9;
+}
+
+.preferences-form__section-label {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--text-light);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.preferences-form__header h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.preferences-form__header p {
+  margin: 5px 0 0;
+  color: var(--text-light);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.preferences-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 20px;
+  padding: 26px;
+}
+
+.preferences-field {
+  min-width: 0;
+}
+
+.preferences-field--full {
+  padding: 0 26px 26px;
+}
+
+.preferences-field label {
+  display: block;
+  margin: 0 0 8px;
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.preferences-field__label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.preferences-field__label-row label {
+  margin-bottom: 8px;
+}
+
+.preferences-field__label-row > span {
+  margin-bottom: 8px;
+  color: var(--text-light);
+  font-size: 9px;
+}
+
+.preferences-field input,
+.preferences-field select,
+.preferences-field textarea {
+  width: 100%;
+  border: 1px solid #ddd8cf;
+  border-radius: 10px;
+  outline: none;
+  background: #fff;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 12px;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    background 150ms ease;
+}
+
+.preferences-field input,
+.preferences-field select {
+  height: 46px;
+  padding: 0 13px;
+}
+
+.preferences-field textarea {
+  min-height: 118px;
+  padding: 12px 13px;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.preferences-field input:hover,
+.preferences-field select:hover,
+.preferences-field textarea:hover {
+  border-color: #cfc8bd;
+}
+
+.preferences-field input:focus,
+.preferences-field select:focus,
+.preferences-field textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-soft);
+  background: #fffefa;
+}
+
+.preferences-field input[aria-invalid="true"],
+.preferences-field select[aria-invalid="true"],
+.preferences-field textarea[aria-invalid="true"] {
+  border-color: #d79b95;
+}
+
+.preferences-field__error {
+  display: block;
+  margin-top: 6px;
+  color: var(--danger);
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+.preferences-form__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 26px;
+  border-top: 1px solid var(--border);
+  background: #faf9f6;
+}
+
+.preferences-form__note {
+  max-width: 460px;
+  margin: 0;
+  color: var(--text-light);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.preferences-save-button {
+  min-width: 150px;
+  min-height: 42px;
+  padding: 0 17px;
+  border: 0;
+  border-radius: 9px;
+  background: #1d1c1a;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 750;
+  cursor: pointer;
+  transition:
+    background 150ms ease,
+    transform 150ms ease;
+}
+
+.preferences-save-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: #2b2926;
+}
+
+.preferences-save-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.preferences-save-button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.preferences-alert {
+  margin: 0 26px 20px;
+  padding: 11px 12px;
+  border-radius: 9px;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.preferences-alert--success {
+  background: #edf6ef;
+  color: #49664d;
+}
+
+.preferences-alert--error {
+  background: #fbeaea;
+  color: var(--danger);
+}
+
+.preferences-state,
+.preferences-form-state {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.preferences-state p,
+.preferences-form-state p {
+  margin: 10px 0 0;
+  color: var(--text-light);
+  font-size: 12px;
+}
+
+.preferences-state--error {
+  padding: 30px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.preferences-state--error strong {
+  color: var(--text);
+  font-size: 14px;
+}
+
+.preferences-state--error p {
+  max-width: 380px;
+  line-height: 1.6;
+}
+
+.preferences-state__spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: preferences-spin 700ms linear infinite;
+}
+
+@keyframes preferences-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 720px) {
+  .preferences-form__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .preferences-form__footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .preferences-form__note {
+    max-width: none;
+  }
+
+  .preferences-save-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .preferences-page__intro {
+    margin-bottom: 22px;
+  }
+
+  .preferences-page__intro h2 {
+    font-size: 29px;
+  }
+
+  .preferences-form__header {
+    padding: 20px 17px;
+  }
+
+  .preferences-form__grid {
+    padding: 20px 17px;
+  }
+
+  .preferences-field--full {
+    padding: 0 17px 20px;
+  }
+
+  .preferences-form__footer {
+    padding: 15px 17px;
+  }
+
+  .preferences-alert {
+    margin-right: 17px;
+    margin-left: 17px;
+  }
+}

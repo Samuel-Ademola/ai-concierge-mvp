@@ -1,0 +1,76 @@
+﻿:root {
+  --bg: #f6f5f1;
+  --surface: #ffffff;
+  --surface-soft: #faf9f6;
+
+  --navy: #102a43;
+  --navy-dark: #081c2d;
+
+  --gold: #b08d57;
+  --gold-soft: #f4ecdf;
+
+  --text: #17212b;
+  --text-muted: #6b7280;
+  --text-light: #9ca3af;
+
+  --border: #e7e3dc;
+
+  --success: #2f7d5a;
+  --success-bg: #eaf5ef;
+
+  --warning: #a66a16;
+  --warning-bg: #fff4df;
+
+  --danger: #a94442;
+  --danger-bg: #fbeaea;
+
+  --shadow-sm: 0 2px 8px rgba(16, 42, 67, 0.05);
+  --shadow-md: 0 12px 32px rgba(16, 42, 67, 0.08);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  --sans:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+}
