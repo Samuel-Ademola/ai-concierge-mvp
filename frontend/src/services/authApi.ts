@@ -1,4 +1,4 @@
-﻿import { API_BASE_URL } from "./apiConfig";
+import { API_BASE_URL } from "./apiConfig";
 
 const AUTH_TOKEN_KEY = "ai_concierge_access_token";
 const AUTH_USER_KEY = "ai_concierge_user";
@@ -166,4 +166,76 @@ export function getAuthHeaders(): Record<string, string> {
 
 export function isAuthenticated(): boolean {
   return Boolean(getAccessToken());
+}
+
+export async function forgotPassword(
+  email: string
+): Promise<string> {
+  const response = await fetch(
+    `${API_BASE_URL}/auth/forgot-password`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+      }),
+    }
+  );
+
+  if (!response.ok) {
+    if (response.status === 422) {
+      throw new Error("Please enter a valid email address.");
+    }
+
+    throw new Error(
+      `Unable to request password reset: ${response.status}`
+    );
+  }
+
+  const data: { message: string } = await response.json();
+
+  return data.message;
+}
+
+export async function resetPassword(
+  token: string,
+  newPassword: string
+): Promise<string> {
+  const response = await fetch(
+    `${API_BASE_URL}/auth/reset-password`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        token,
+        new_password: newPassword,
+      }),
+    }
+  );
+
+  if (!response.ok) {
+    if (response.status === 400) {
+      throw new Error(
+        "This reset link is invalid or has expired."
+      );
+    }
+
+    if (response.status === 422) {
+      throw new Error(
+        "Please check your new password."
+      );
+    }
+
+    throw new Error(
+      `Unable to reset password: ${response.status}`
+    );
+  }
+
+  const data: { message: string } = await response.json();
+
+  return data.message;
 }

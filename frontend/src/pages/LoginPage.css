@@ -1,4 +1,4 @@
-﻿.login-page {
+.login-page {
   min-height: 100vh;
   display: grid;
   place-items: center;
@@ -162,4 +162,28 @@
 
 .password-toggle:hover {
   color: #111827;
+}
+
+.login-forgot {
+  justify-self: end;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #6b7280;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-forgot:hover {
+  color: #111827;
+  text-decoration: underline;
+}
+
+.login-forgot:focus-visible,
+.login-switch-button:focus-visible {
+  outline: 2px solid #111827;
+  outline-offset: 3px;
+  border-radius: 4px;
 }
