@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import DateTime, String, Text
+from sqlalchemy import DateTime, ForeignKey, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.database import Base
@@ -25,6 +25,14 @@ class GuestRequest(Base):
         String(100),
         index=True,
         nullable=False,
+    )
+
+    # Canonical User relationship.
+    # Nullable so existing legacy demo requests remain intact.
+    user_pk: Mapped[int | None] = mapped_column(
+        ForeignKey("users.id"),
+        nullable=True,
+        index=True,
     )
 
     request_type: Mapped[str] = mapped_column(
