@@ -1,5 +1,6 @@
 ﻿from fastapi import APIRouter, Depends, HTTPException
 
+from app.dependencies.tenant import get_current_hotel
 from app.schemas.request_schema import (
     GuestRequestCreate,
     GuestRequestResponse,
@@ -25,9 +26,11 @@ router = APIRouter(
 async def create_request(
     request: GuestRequestCreate,
     current_user: dict[str, str] = Depends(get_current_user),
+    current_hotel=Depends(get_current_hotel),
 ):
     return create_guest_request(
         user_id=current_user["user_id"],
+        hotel_id=current_hotel.id,
         request_type=request.request_type,
         details=request.details,
     )
@@ -39,8 +42,12 @@ async def create_request(
 )
 async def get_requests(
     current_user: dict[str, str] = Depends(get_current_user),
+    current_hotel=Depends(get_current_hotel),
 ):
-    return get_guest_requests(current_user["user_id"])
+    return get_guest_requests(
+        user_id=current_user["user_id"],
+        hotel_id=current_hotel.id,
+    )
 
 
 @router.patch(
@@ -51,9 +58,11 @@ async def update_request_status(
     request_id: str,
     update: GuestRequestStatusUpdate,
     current_user: dict[str, str] = Depends(require_staff),
+    current_hotel=Depends(get_current_hotel),
 ):
     request = update_guest_request_status(
         request_id=request_id,
+        hotel_id=current_hotel.id,
         status=update.status,
     )
 

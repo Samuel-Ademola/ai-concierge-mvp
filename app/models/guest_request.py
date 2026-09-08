@@ -1,6 +1,8 @@
 from datetime import datetime, timezone
+
 from sqlalchemy import DateTime, ForeignKey, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
+
 from app.database import Base
 
 
@@ -33,6 +35,14 @@ class GuestRequest(Base):
         index=True,
     )
 
+    # Canonical hotel tenant.
+    # Nullable so existing legacy requests can remain intact until migrated.
+    hotel_id: Mapped[int | None] = mapped_column(
+        ForeignKey("hotels.id"),
+        nullable=True,
+        index=True,
+    )
+
     request_type: Mapped[str] = mapped_column(
         String(50),
         nullable=False,
@@ -50,7 +60,7 @@ class GuestRequest(Base):
     )
 
     created_at: Mapped[datetime] = mapped_column(
-    DateTime,
-    default=lambda: datetime.now(timezone.utc).replace(tzinfo=None),
-    nullable=False,
+        DateTime,
+        default=lambda: datetime.now(timezone.utc).replace(tzinfo=None),
+        nullable=False,
     )
