@@ -1,8 +1,6 @@
-from datetime import datetime
-
+from datetime import datetime, timezone
 from sqlalchemy import DateTime, ForeignKey, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
-
 from app.database import Base
 
 
@@ -52,7 +50,7 @@ class GuestRequest(Base):
     )
 
     created_at: Mapped[datetime] = mapped_column(
-        DateTime,
-        default=datetime.utcnow,
-        nullable=False,
+    DateTime,
+    default=lambda: datetime.now(timezone.utc).replace(tzinfo=None),
+    nullable=False,
     )

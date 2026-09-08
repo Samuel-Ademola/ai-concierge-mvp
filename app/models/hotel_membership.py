@@ -1,46 +1,49 @@
 from datetime import datetime, timezone
 
-from sqlalchemy import Boolean, DateTime, String
+from sqlalchemy import Boolean, DateTime, ForeignKey, String, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
 
 
-class User(Base):
-    __tablename__ = "users"
+class HotelMembership(Base):
+    __tablename__ = "hotel_memberships"
+
+    __table_args__ = (
+        UniqueConstraint(
+            "user_id",
+            "hotel_id",
+            name="uq_hotel_membership_user_hotel",
+        ),
+    )
 
     id: Mapped[int] = mapped_column(
         primary_key=True,
         index=True,
     )
 
-    name: Mapped[str] = mapped_column(
-        String(100),
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id"),
         nullable=False,
-    )
-
-    email: Mapped[str] = mapped_column(
-        String(255),
-        unique=True,
         index=True,
-        nullable=False,
     )
 
-    password_hash: Mapped[str] = mapped_column(
-        String(255),
+    hotel_id: Mapped[int] = mapped_column(
+        ForeignKey("hotels.id"),
         nullable=False,
+        index=True,
     )
 
     role: Mapped[str] = mapped_column(
-        String(30),
+        String(50),
         nullable=False,
-        default="guest",
+        default="staff",
     )
 
     is_active: Mapped[bool] = mapped_column(
         Boolean,
-        default=True,
         nullable=False,
+        default=True,
     )
 
     created_at: Mapped[datetime] = mapped_column(
@@ -56,14 +59,12 @@ class User(Base):
         nullable=False,
     )
 
-    guest_profile = relationship(
-        "Guest",
-        back_populates="user",
-        uselist=False,
+    user = relationship(
+        "User",
+        back_populates="hotel_memberships",
     )
 
-    hotel_memberships = relationship(
-        "HotelMembership",
-        back_populates="user",
-        cascade="all, delete-orphan",
+    hotel = relationship(
+        "Hotel",
+        back_populates="memberships",
     )

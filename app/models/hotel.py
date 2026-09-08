@@ -45,3 +45,9 @@ class Hotel(Base):
         "Guest",
         back_populates="hotel",
     )
+
+    memberships = relationship(
+        "HotelMembership",
+        back_populates="hotel",
+        cascade="all, delete-orphan",
+    )
